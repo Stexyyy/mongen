@@ -1,0 +1,65 @@
+#include <stdio.h> //.h means a C library
+using namespace std;
+
+int mongen();
+
+int main() {
+	int room = 1;
+	char choice;
+
+	//in C %f is float and %d is an int and %c is for char and strings are %s
+
+	printf("Bruh text based game \n"); // \n means endl in C
+	do {
+		switch (room) {
+		case 1:
+			printf("you're in room 1, you can  go (e)ast. \n");
+			scanf_s ("%c", &choice);
+			if (choice == 'e')
+				room = 2;
+			else
+				printf("Huh??? \n");
+			break;
+
+		case 2:
+			printf("you're in room 2, you can  go (w)est, or (s)outh. \n");
+			scanf_s("%c", &choice);
+			mongen();
+			if (choice == 'w')
+				room = 1;
+			else if (choice == 's')
+				room = 3;
+			else
+				printf("Huh??? \n");
+			break;
+
+		case 3:
+			printf("you're in room 3, you can (n)orth \n");
+			scanf_s("%c", &choice);
+			if (choice == 'n')
+				room = 2;
+			else
+				printf("Huh??? \n");
+			break;
+		}//end switch
+	} while (choice != 'q');
+
+}
+
+// function def
+int mongen() {
+	int num = rand() % 100; //idk how to fix this tbh
+	if (num < 30) {
+		printf ("a zombie appeared!! AAAA \n");
+		return 10;
+	}
+	else if (num < 50) {
+		printf("A skeleton appeared!! (I hate skeletons in minecraft so much btw) \n");
+		return 15;
+	}
+	else {
+		printf("theres no monsters for now.. \n");
+		return 0;
+	}
+
+}
